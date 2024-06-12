@@ -14,6 +14,8 @@
 #define PRIu64 "lu"
 #endif
 
+static int total_samples = 0;
+
 void progress_callback(const FLAC__StreamEncoder *encoder, FLAC__uint64 bytes_written, FLAC__uint64 samples_written, unsigned frames_written, unsigned total_frames_estimate, void *client_data);
 
 
@@ -25,7 +27,6 @@ int main(int argc, char *argv[])
     int sample_rate = 0;
     int bits_per_sample = 0;
     int channels = 0;
-    int total_samples = 0;
     unsigned char *buffer = NULL; // fixbug: 这里需要用 unsigned char 类型或者 FLAC__uint8 ，否则音频有问题
     /* 输出FLAC文件相关信息 */
     char *out_flac_file_name = NULL;
@@ -173,7 +174,6 @@ void progress_callback(const FLAC__StreamEncoder *encoder, FLAC__uint64 bytes_wr
 {
 	(void)encoder, (void)client_data;
 
-//	fprintf(stderr, "wrote %" PRIu64 " bytes, %" PRIu64 "/%u samples, %u/%u frames\n", bytes_written, samples_written, total_samples, frames_written, total_frames_estimate);
-	fprintf(stderr, "wrote %" PRIu64 " bytes, %" PRIu64 "/%u samples, %u/%u frames\n", bytes_written, samples_written, 111111, frames_written, total_frames_estimate);
+	fprintf(stdout, "wrote %" PRIu64 " bytes, %" PRIu64 "/%u samples, %u/%u frames\n", bytes_written, samples_written, total_samples, frames_written, total_frames_estimate);
 }
 
