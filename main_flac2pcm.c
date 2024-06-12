@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     if(argc != 3)
     {
         printf("Usage: \n"
-                "\t %s <in-flac-file>\n"
+                "\t %s <in-flac-file> <out-pcm-file>\n"
                 "Examples: \n"
                 "\t %s ./audio/out1.flac out_16000_16_1.pcm\n"
                 "\t %s ./audio/out2.flac out_44100_16_2.pcm\n"
