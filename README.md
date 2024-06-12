@@ -1,5 +1,7 @@
 1、移植步骤
 
+源码下载地址：[https://github.com/xiph/flac/releases](https://github.com/xiph/flac/releases) 
+
 ```bash
 tar xzf flac-1.4.3.tar.gz
 cd flac-1.4.3/
