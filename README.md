@@ -1,4 +1,4 @@
-1、移植步骤
+#### 1、移植步骤
 
 源码下载地址：[https://github.com/xiph/flac/releases](https://github.com/xiph/flac/releases) 
 
@@ -12,9 +12,9 @@ make install
 tree _install/ -h
 ```
 
-2、demo使用方法
+#### 2、demo使用方法
 
-编译
+##### 编译
 
 ```bash
 $ make clean && make
@@ -23,7 +23,7 @@ gcc main_pcm2flac.c -I./include -lFLAC -L./libs -lm -o pcm2flac
 gcc main_flac2pcm.c -I./include -lFLAC -L./libs -lm -o flac2pcm
 ```
 
-编码
+##### 编码
 
 ```bash
 $ ./pcm2flac 
@@ -34,7 +34,7 @@ Examples:
          ./pcm2flac ./audio/test_44100_16_2.pcm 44100 16 2 out2.flac
 ```
 
-解码
+##### 解码
 
 ```bash
 Usage: 
@@ -44,14 +44,14 @@ Examples:
          ./flac2pcm ./audio/out2.flac out_44100_16_2.pcm
 ```
 
-3、参考文章
+#### 3、参考文章
 
 - [FLAC 格式详解_flac格式解析-CSDN博客](https://blog.csdn.net/ffgamelife/article/details/7893747) 
 - [FLAC 格式详解 - 刘文涛 - 博客园](https://www.cnblogs.com/liuwt0911/articles/3730378.html) 
 
-4、demo使用日志
+#### 4、demo使用日志
 
-编码
+##### 编码
 
 如果是双声道，那么一个采样点就包含16bit*2channels等于4个字节，单通道就是2个字节（16bit），那么，文件大小/一个采样点的字节数=总的采样点数。
 
@@ -375,7 +375,7 @@ encoding: succeeded
 ./audio/test_44100_16_2.pcm -> out2.flac: Success!
 ```
 
-解码
+##### 解码
 
 ```
 $ ls -l audio/
@@ -402,3 +402,43 @@ decoding: succeeded
    state: FLAC__STREAM_DECODER_END_OF_STREAM
 ```
 
+#### 5、demo目录架构
+
+```bash
+$ tree
+.
+├── audio
+│   ├── out1.flac
+│   ├── out2.flac
+│   ├── test_16000_16_1.pcm
+│   └── test_44100_16_2.pcm
+├── docs
+│   ├── FLAC文件格式详解-CSDN博客.mhtml
+│   └── FLAC 格式详解 - 刘文涛 - 博客园.pdf
+├── include
+│   ├── FLAC
+│   │   ├── all.h
+│   │   ├── assert.h
+│   │   ├── callback.h
+│   │   ├── export.h
+│   │   ├── format.h
+│   │   ├── metadata.h
+│   │   ├── ordinals.h
+│   │   ├── stream_decoder.h
+│   │   └── stream_encoder.h
+│   └── FLAC++
+│       ├── all.h
+│       ├── decoder.h
+│       ├── encoder.h
+│       ├── export.h
+│       └── metadata.h
+├── libs
+│   ├── libFLAC.a
+│   └── libFLAC++.a
+├── main_flac2pcm.c
+├── main_pcm2flac.c
+├── Makefile
+├── opensource
+│   └── flac-1.4.3.tar.gz
+└── README.md
+```
